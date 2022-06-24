@@ -34,19 +34,3 @@ jobs:
                 "baz": 123
               ]
             ]
-
-  test_relative2:
-    runs-on: ubuntu-latest
-    name: Testing self too
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run our own action
-        uses: /
-        with:
-          who-to-greet: |
-            [
-              {
-                "foo": "${{ github.ref_name }}",
-                "baz": 123
-              ]
-            ]
