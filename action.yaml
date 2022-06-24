@@ -17,9 +17,9 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
-    - run: echo A: '${{ env.TEST_SECRET_A }}'.
+    - run: "echo A: '${{ env.TEST_SECRET_A }}'."
       shell: bash
-    - run: echo B: '${{ env.TEST_SECRET_B }}'.
+    - run: "echo B: '${{ env.TEST_SECRET_B }}'."
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
