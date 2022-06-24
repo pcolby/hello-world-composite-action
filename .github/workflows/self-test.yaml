@@ -19,6 +19,18 @@ jobs:
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 
+  test_secret_v1:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: pcolby/hello-world-composite-action@v1
+        with:
+          who-to-greet: ${{ secrets.TEST_SECRET_A }}
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
+
   test_relative:
     runs-on: ubuntu-latest
     name: Testing self
@@ -34,3 +46,16 @@ jobs:
                 "baz": 123
               ]
             ]
+
+  test_secret_relative:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: ./
+        with:
+          who-to-greet: ${{ secrets.TEST_SECRET_A }}
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
+
