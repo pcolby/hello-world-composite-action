@@ -1,0 +1,38 @@
+on: [push]
+
+jobs:
+  test_v1:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: pcolby/hello-world-composite-action@v1
+        with:
+          who-to-greet: |
+            [
+              {
+                "foo": "${{ github.ref_name }}",
+                "baz": 123
+              ]
+            ]
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
+
+  test_relative:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: action.yaml
+        with:
+          who-to-greet: |
+            [
+              {
+                "foo": "${{ github.ref_name }}",
+                "baz": 123
+              ]
+            ]
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
