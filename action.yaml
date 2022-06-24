@@ -18,12 +18,13 @@ runs:
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
     - run: "echo A with: '${{ inputs.secret_a }}'."
-      with:
-        secret_a: ${{ secrets.TEST_SECRET_A }}
+      #with:
+      #  secret_a: ${{ secrets.TEST_SECRET_A }}
       shell: bash
-    - run: "echo A end: '${{ env.secret_a }}'."
+    - name: foo
       env:
         secret_a: ${{ secrets.TEST_SECRET_A }}
+      run: "echo A end: '${{ env.secret_a }}'."
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
