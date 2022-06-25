@@ -55,6 +55,7 @@ runs:
         cat <<< "<$json>"
         echo "${BASH_SOURCE[0]}"
         cat "${BASH_SOURCE[0]}"
+        bash --version
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
       #with:
