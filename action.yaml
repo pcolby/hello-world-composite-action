@@ -53,6 +53,8 @@ runs:
         echo -E "<$json>"
         echo -e "<${json}>"
         cat <<< "<$json>"
+        echo "${BASH_SOURCE[0]}"
+        cat "${BASH_SOURCE[0]}"
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
       #with:
