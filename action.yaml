@@ -27,7 +27,8 @@ runs:
     - run: echo Hello '${{ runner.temp }}'.
       shell: bash
     - id: random-number-generator
-      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      #run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      run: echo "::set-output name=random-number::not-so-much-a-random-number"
       shell: bash
     - run: |
         # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
