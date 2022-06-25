@@ -18,7 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Mask sensitive data
-        run: echo "::add-mask::${{ github.event.inputs.url }}"
+        run: |
+          jq -e . "$GITHUB_EVENT_PATH"
+          echo "::add-mask::${{ github.event.inputs.url }}"
         env:
           SECRET_URL: ${{ secrets[github.event.inputs.url] }}
       - name: Run our own action
