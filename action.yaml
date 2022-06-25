@@ -31,6 +31,7 @@ runs:
       shell: bash
     - run: |
         # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
+        env
         echo '<${{ inputs.test-default }}>'
         echo '<${{ inputs.test-optional-given }}>'
         echo '<${{ inputs.test-OptionNotGiven }}>'
