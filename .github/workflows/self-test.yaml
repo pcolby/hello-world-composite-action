@@ -46,6 +46,7 @@ jobs:
                 "baz": 123
               ]
             ]
+          test-optional-given: 'My "optional" value'
 
   test_secret_relative:
     runs-on: ubuntu-latest
