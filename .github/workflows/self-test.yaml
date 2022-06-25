@@ -46,7 +46,7 @@ jobs:
                 "baz": 123
               ]
             ]
-          test-optional-given: 'My "optional" value'
+          test-optional-given: "My \"optional\" value\'s the {best} :).\nFor sure!"
 
   test_secret_relative:
     runs-on: ubuntu-latest
