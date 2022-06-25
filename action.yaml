@@ -33,8 +33,8 @@ runs:
         echo '<${{ inputs.test-default }}>'
         echo '<${{ inputs.test-optional-given }}>'
         echo '<${{ inputs.test-OptionNotGiven }}>'
-        [[ -z '<${{ inputs.test-optional-given }}>' ]] || safeA=$(jq --raw-input --slurp <<< '${{ inputs.test-optional-given }}')
-        [[ -z '<${{ inputs.test-OptionNotGiven }}>' ]] || safeB=$(jq --raw-input --slurp <<< '${{ inputs.test-OptionNotGiven }}')
+        [[ -z '${{ inputs.test-optional-given }}' ]] || safeA=$(jq --raw-input --slurp <<< '${{ inputs.test-optional-given }}')
+        [[ -z '${{ inputs.test-OptionNotGiven }}' ]] || safeB=$(jq --raw-input --slurp <<< '${{ inputs.test-OptionNotGiven }}')
         json="$(cat <<--
         {
           "foo": "bar",
