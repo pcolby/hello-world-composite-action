@@ -47,7 +47,8 @@ runs:
         }
         -
         )";
-        echo "<$json>"
+        echo -E "<$json>"
+        echo -E "<${json}>"
         cat <<< "<$json>"
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
