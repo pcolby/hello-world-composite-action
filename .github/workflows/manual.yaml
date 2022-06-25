@@ -23,7 +23,7 @@ jobs:
           who-to-greet: |
             [
               {
-                "foo": "${{ github.events.inputs.url }}",
+                "foo": "${{ github.event.inputs.url }}",
                 "baz": 123
               ]
             ]
