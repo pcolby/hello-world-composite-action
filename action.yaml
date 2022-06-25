@@ -33,10 +33,12 @@ runs:
         # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
         env
         echo '<${{ inputs.test-default }}>'
-        echo '<${{ inputs.test-optional-given }}>'
-        echo '<${{ inputs.test-OptionNotGiven }}>'
-        [[ -z '${{ inputs.test-optional-given }}' ]] || safeA=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< '${{ inputs.test-optional-given }}')
-        [[ -z '${{ inputs.test-OptionNotGiven }}' ]] || safeB=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< '${{ inputs.test-OptionNotGiven }}')
+        echo "$INPUT_OPTION_A"
+        echo "$INPUT_OPTION_B"
+        #[[ -z '${{ inputs.test-optional-given }}' ]] || safeA=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< '${{ inputs.test-optional-given }}')
+        #[[ -z '${{ inputs.test-OptionNotGiven }}' ]] || safeB=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< '${{ inputs.test-OptionNotGiven }}')
+        [[ -z "$INPUT_OPTION_A" ]] || safeA=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< "$INPUT_OPTION_A")
+        [[ -z "$INPUT_OPTION_B" ]] || safeB=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< "$INPUT_OPTION_B")
         json="$(cat <<--
         {
           "foo": "bar",
@@ -52,6 +54,9 @@ runs:
         cat "${BASH_SOURCE[0]}"
         bash --version
       shell: bash
+      env:
+        INPUT_OPTION_A: ${{ inputs.test-optional-given }}
+        INPUT_OPTION_B: ${{ inputs.test-OptionNotGiven }}
     #- run: "echo A with: '${{ inputs.secret_a }}'."
       #with:
       #  secret_a: ${{ secrets.TEST_SECRET_A }}
