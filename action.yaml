@@ -38,8 +38,11 @@ runs:
         json="$(cat <<--
         {
           "foo": "bar",
-          ${safeA:+\"FOO_A\": "$safeA",}
-          ${safeB:+\"FOO_B\": "$safeB",}
+          ${safeA:+'"FOO_A": $safeA,'}
+          ${safeA:+"FOO_A": $safeA,}
+          ${safeA:+"\"FOO_A\": $safeA,"}
+          ${safeA:+'"FOO_A"': $safeA,}
+          ${safeB:+\"FOO_B\": $safeB,}
         }
         -
         )";
