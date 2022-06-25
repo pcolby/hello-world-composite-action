@@ -44,6 +44,7 @@ runs:
           ${safeA:+'"FOO_4"': $safeA,}
           ${safeA:+\"FOO_5\": $safeA,}
           ${safeB:+\"FOO_B\": $safeB,}
+          ${safeA:+"\\"FOO_6\\": $safeA,"}
         }
         -
         )";
