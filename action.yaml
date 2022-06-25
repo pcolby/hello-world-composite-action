@@ -42,6 +42,7 @@ runs:
           ${safeA:+"FOO_A": $safeA,}
           ${safeA:+"\"FOO_A\": $safeA,"}
           ${safeA:+'"FOO_A"': $safeA,}
+          ${safeB:+\"FOO_A\": $safeA,}
           ${safeB:+\"FOO_B\": $safeB,}
         }
         -
