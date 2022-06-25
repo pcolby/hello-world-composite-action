@@ -29,7 +29,10 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
-    - run: env
+    - run: |
+        echo '<${{ inputs.test-default }}>'
+        echo '<${{ inputs.test-optional-given }}>'
+        echo '<${{ inputs.test-OptionNotGiven }}>'
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
       #with:
