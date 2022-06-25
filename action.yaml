@@ -45,12 +45,13 @@ runs:
           ${safeA:+\"FOO_5\": $safeA,}
           ${safeB:+\"FOO_B\": $safeB,}
           ${safeA:+"\\"FOO_6\\": $safeA,"}
-          ${safeA:+"\u0022FOO_6\u0022: \"$safeA\","}
+          ${safeA:+"\u0022FOO_6\u0022: "$safeA","}
+          ${safeA:+"\x22FOO_6\x22: "$safeA","}
         }
         -
         )";
         echo -E "<$json>"
-        echo -E "<${json}>"
+        echo -e "<${json}>"
         cat <<< "<$json>"
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
