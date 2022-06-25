@@ -30,6 +30,7 @@ runs:
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
     - run: |
+        # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
         echo '<${{ inputs.test-default }}>'
         echo '<${{ inputs.test-optional-given }}>'
         echo '<${{ inputs.test-OptionNotGiven }}>'
@@ -38,6 +39,7 @@ runs:
         json="$(cat <<--
         {
           "foo": "bar",
+          ${safeA:+$(printf %s '"FOO_0"'): $safeA,}
           ${safeA:+'"FOO_1": $safeA,'}
           ${safeA:+"FOO_2": $safeA,}
           ${safeA:+"\"FOO_3\": $safeA,"}
