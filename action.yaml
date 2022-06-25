@@ -39,16 +39,8 @@ runs:
         json="$(cat <<--
         {
           "foo": "bar",
-          ${safeA:+$(printf %s '"FOO_0"'): $safeA,}
-          ${safeA:+'"FOO_1": $safeA,'}
-          ${safeA:+"FOO_2": $safeA,}
-          ${safeA:+"\"FOO_3\": $safeA,"}
-          ${safeA:+'"FOO_4"': $safeA,}
-          ${safeA:+\"FOO_5\": $safeA,}
-          ${safeB:+\"FOO_B\": $safeB,}
-          ${safeA:+"\\"FOO_6\\": $safeA,"}
-          ${safeA:+"\u0022FOO_6\u0022: "$safeA","}
-          ${safeA:+"\x22FOO_6\x22: "$safeA","}
+          ${safeA:+$(printf '%s' '"FOO_A"'): $safeA,}
+          ${safeB:+$(printf '%s' '"FOO_B"'): $safeB,}
         }
         -
         )";
