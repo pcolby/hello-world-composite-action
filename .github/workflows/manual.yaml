@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: stuff
+        required: true
+      text:
+        description: stuff too
+        required: true
+      name:
+        description: blah
+        required: false
+
+jobs:
+  test_relative:
+    runs-on: ubuntu-latest
+    name: Testing self
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run our own action
+        uses: ./
+        with:
+          who-to-greet: |
+            [
+              {
+                "foo": "${{ github.events.inputs.url }}",
+                "baz": 123
+              ]
+            ]
+          test-optional-given: "My \"optional\" value\'s the {best} :).\nFor sure!"
