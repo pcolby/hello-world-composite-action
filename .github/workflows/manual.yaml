@@ -17,6 +17,10 @@ jobs:
     name: Testing self
     steps:
       - uses: actions/checkout@v3
+      - name: Mask sensitive data
+        run: echo "::add-mask::$SLACK_URL"
+        env:
+          SLACK_URL: ${{ github.event.inputs.url }}
       - name: Run our own action
         uses: ./
         with:
