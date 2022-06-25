@@ -28,7 +28,7 @@ runs:
       shell: bash
     - id: random-number-generator
       #run: echo "::set-output name=random-number::$(echo $RANDOM)"
-      run: echo -e "::set-output name=random-number::not-so-much a random-number\n\nsome more"
+      run: echo -e "::set-output name=random-number::not-so-much a random-number {complex[symbols::]} eh?\n\nsome more"
       shell: bash
     - run: |
         # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
