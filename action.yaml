@@ -31,7 +31,6 @@ runs:
       shell: bash
     - run: |
         # Note, we're seeing https://git.savannah.gnu.org/cgit/bash.git/tree/CHANGES#n370 :(
-        env
         echo '<${{ inputs.test-default }}>'
         echo "$INPUT_OPTION_A"
         echo "$INPUT_OPTION_B"
@@ -48,9 +47,7 @@ runs:
         echo -E "<$json>"
         echo -e "<${json}>"
         cat <<< "<$json>"
-        echo "${BASH_SOURCE[0]}"
-        cat "${BASH_SOURCE[0]}"
-        bash --version
+        jq . <<< "$json"
       shell: bash
       env:
         INPUT_OPTION_A: ${{ inputs.test-optional-given }}
