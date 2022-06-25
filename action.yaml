@@ -38,12 +38,13 @@ runs:
         json="$(cat <<--
         {
           "foo": "bar",
-          ${safeA:+"FOO_A": "$safeA",}
-          ${safeB:+"FOO_B": "$safeB",}
+          ${safeA:+\"FOO_A": "$safeA",}
+          ${safeB:+\"FOO_B": "$safeB",}
         }
         -
         )";
         echo "<$json>"
+        cat << "<$json>"
       shell: bash
     #- run: "echo A with: '${{ inputs.secret_a }}'."
       #with:
