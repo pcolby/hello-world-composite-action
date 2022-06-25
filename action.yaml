@@ -38,14 +38,13 @@ runs:
         [[ -z "$INPUT_OPTION_B" ]] || safeB=$(jq --raw-input --slurp 'rtrimstr("\n")' <<< "$INPUT_OPTION_B")
         json="$(cat <<--
         {
-          "foo": "bar",
           ${safeA:+$(printf '%s' '"FOO_A"'): $safeA,}
           ${safeB:+$(printf '%s' '"FOO_B"'): $safeB,}
+          "foo": "bar"
         }
         -
         )";
-        echo -E "<$json>"
-        echo -e "<${json}>"
+        echo "<$json>"
         cat <<< "<$json>"
         jq . <<< "$json"
       shell: bash
