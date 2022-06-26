@@ -64,8 +64,15 @@ jobs:
   inspect_runners:
     runs-on: ${{ matrix.os }}
     steps:
-      - run: |
-          bash --version
+      - run: bash --version
+        shell: bash
+      - name: should pass
+        run: true
+        shell: bash
+      - name: should fail
+        run: |
+          [[ a == b ]]
+          echo 'should not get here!'
           false
         shell: bash
     strategy:
