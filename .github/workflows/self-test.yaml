@@ -74,6 +74,8 @@ jobs:
       - name: should fail
         run: |
           [[ a == b ]]
+          echo $?
+          [[ a == b ]] && echo match || echo not much
           echo 'should not get here!'
           false
         shell: bash
