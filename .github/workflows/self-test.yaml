@@ -65,6 +65,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - run: |
+          bash --version
           false
         shell: bash
     strategy:
