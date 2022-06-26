@@ -71,14 +71,29 @@ jobs:
       - name: should pass
         run: true
         shell: bash
-      - name: should fail
+      - name: should fail A
         run: |
+          echo before
+          [[ a == b ]]
+          echo $?
+          echo after
+          echo 'should not get here!'
+        shell: bash
+      - name: should fail B
+        run: |
+          echo before
           [[ a == b ]] || false
           echo $?
-          [[ a == b ]] && echo match || echo not much
-          [[ a == b ]] || exit
+          echo after
           echo 'should not get here!'
-          false
+        shell: bash
+      - name: should fail C
+        run: |
+          echo before
+          [[ a == b ]] || exit
+          echo $?
+          echo after
+          echo 'should not get here!'
         shell: bash
     strategy:
       matrix:
