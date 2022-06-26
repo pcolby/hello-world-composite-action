@@ -64,7 +64,8 @@ jobs:
   inspect_runners:
     runs-on: ${{ matrix.os }}
     steps:
-      - run: nc -h
+      - run: |
+          false
         shell: bash
     strategy:
       matrix:
@@ -75,6 +76,6 @@ jobs:
           - ubuntu-18.04
           - ubuntu-20.04 # aka ubuntu-latest
           - ubuntu-22.04
-          #- windows-2019
-          #- windows-2022 # aka windows-latest
+          - windows-2019
+          - windows-2022 # aka windows-latest
       fail-fast: false
