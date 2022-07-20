@@ -1,0 +1,1 @@
+../bin/test-symlink-2.sh

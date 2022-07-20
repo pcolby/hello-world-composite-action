@@ -60,6 +60,24 @@ jobs:
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 
+  test-links:
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: ./.github/workflows/foo.sh
+      - run: ./bin/test-symlink-1.sh
+      - run: ./bin/test-symlink-2.sh
+      - run: ./tmp/test-symlink-2.sh
+      - run: ./tmp/workflows/foo.sh
+    strategy:
+      matrix:
+        os:
+          - macos-10.15
+          - macos-11     # aka macos-latest
+          - macos-12
+          - ubuntu-18.04
+          - ubuntu-20.04 # aka ubuntu-latest
+          - ubuntu-22.04
+      fail-fast: false
 
   inspect_runners:
     runs-on: ${{ matrix.os }}
