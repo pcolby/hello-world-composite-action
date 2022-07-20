@@ -63,6 +63,7 @@ jobs:
   test-links:
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v3
       - run: ./.github/workflows/foo.sh
       - run: ./bin/test-symlink-1.sh
       - run: ./bin/test-symlink-2.sh
