@@ -21,15 +21,15 @@ jobs:
     runs-on: ${{ github.event.inputs.host }}
     steps:
       # https://docs.github.com/en/actions/learn-github-actions/contexts
-      - { env: GITHUB_CONTEXT:   ${{ toJson(github)  }}, run: echo "$GITHUB_CONTEXT"   }
-      - { env: ENV_CONTEXT:      ${{ toJson(env   )  }}, run: echo "$ENV_CONTEXT"      }
-      - { env: VARS_CONTEXT:     ${{ toJson(vars  )  }}, run: echo "$VARS_CONTEXT"     }
-      - { env: JOB_CONTEXT:      ${{ toJson(job)     }}, run: echo "$JOB_CONTEXT"      }
-      - { env: JOBS_CONTEXT:     ${{ toJson(jobs)    }}, run: echo "$JOBS_CONTEXT"     }
-      - { env: STEPS_CONTEXT:    ${{ toJson(steps)   }}, run: echo "$STEPS_CONTEXT"    }
-      - { env: RUNNER_CONTEXT:   ${{ toJson(runner)  }}, run: echo "$RUNNER_CONTEXT"   }
-      - { env: SECRETS_CONTEXT:  ${{ toJson(secrets) }}, run: echo "$SECRETS_CONTEXT"  }
-      - { env: STRATEGY_CONTEXT: ${{ toJson(stategy) }}, run: echo "$STRATEGY_CONTEXT" }
-      - { env: MATRIX_CONTEXT:   ${{ toJson(matrix)  }}, run: echo "$MATRIX_CONTEXT"   }
-      - { env: NEEDS_CONTEXT:    ${{ toJson(needs)   }}, run: echo "$NEEDS_CONTEXT"    }
-      - { env: INPUTS_CONTEXT:   ${{ toJson(inputs)  }}, run: echo "$INPUTS_CONTEXT"   }
+      - { env: { GITHUB_CONTEXT:   ${{ toJson(github)  }} }, run: echo "$GITHUB_CONTEXT"   }
+      - { env: { ENV_CONTEXT:      ${{ toJson(env   )  }} }, run: echo "$ENV_CONTEXT"      }
+      - { env: { VARS_CONTEXT:     ${{ toJson(vars  )  }} }, run: echo "$VARS_CONTEXT"     }
+      - { env: { JOB_CONTEXT:      ${{ toJson(job)     }} }, run: echo "$JOB_CONTEXT"      }
+      - { env: { JOBS_CONTEXT:     ${{ toJson(jobs)    }} }, run: echo "$JOBS_CONTEXT"     }
+      - { env: { STEPS_CONTEXT:    ${{ toJson(steps)   }} }, run: echo "$STEPS_CONTEXT"    }
+      - { env: { RUNNER_CONTEXT:   ${{ toJson(runner)  }} }, run: echo "$RUNNER_CONTEXT"   }
+      - { env: { SECRETS_CONTEXT:  ${{ toJson(secrets) }} }, run: echo "$SECRETS_CONTEXT"  }
+      - { env: { STRATEGY_CONTEXT: ${{ toJson(stategy) }} }, run: echo "$STRATEGY_CONTEXT" }
+      - { env: { MATRIX_CONTEXT:   ${{ toJson(matrix)  }} }, run: echo "$MATRIX_CONTEXT"   }
+      - { env: { NEEDS_CONTEXT:    ${{ toJson(needs)   }} }, run: echo "$NEEDS_CONTEXT"    }
+      - { env: { INPUTS_CONTEXT:   ${{ toJson(inputs)  }} }, run: echo "$INPUTS_CONTEXT"   }
