@@ -1,0 +1,36 @@
+on:
+  workflow_dispatch:
+    inputs:
+      host:
+        description: 'Host environment to run on'
+        required: true
+        default: ubuntu-22.04
+        type: choice
+        options:
+          - macos-10.15
+          - macos-11
+          - macos-12
+          - ubuntu-18.04
+          - ubuntu-20.04
+          - ubuntu-22.04
+          - windows-2019
+          - windows-2022
+
+jobs:
+  context:
+    runs-on: ${{ github.event.inputs.host }}
+    steps: # https://docs.github.com/en/actions/learn-github-actions/contexts
+      - name: Trap
+        run: 'trap ''echo "debug: $BASH_COMMAND"'' DEBUG'
+      - { env: { GITHUB_CONTEXT:   "${{ toJson(github)   }}" }, run: echo "$GITHUB_CONTEXT"   }
+      - { env: { ENV_CONTEXT:      "${{ toJson(env)      }}" }, run: echo "$ENV_CONTEXT"      }
+      - { env: { VARS_CONTEXT:     "${{ toJson(vars)     }}" }, run: echo "$VARS_CONTEXT"     }
+      - { env: { JOB_CONTEXT:      "${{ toJson(job)      }}" }, run: echo "$JOB_CONTEXT"      }
+      #- { env: { JOBS_CONTEXT:     "${{ toJson(jobs)     }}" }, run: echo "$JOBS_CONTEXT"     }
+      - { env: { STEPS_CONTEXT:    "${{ toJson(steps)    }}" }, run: echo "$STEPS_CONTEXT"    }
+      - { env: { RUNNER_CONTEXT:   "${{ toJson(runner)   }}" }, run: echo "$RUNNER_CONTEXT"   }
+      - { env: { SECRETS_CONTEXT:  "${{ toJson(secrets)  }}" }, run: echo "$SECRETS_CONTEXT"  }
+      - { env: { STRATEGY_CONTEXT: "${{ toJson(strategy) }}" }, run: echo "$STRATEGY_CONTEXT" }
+      - { env: { MATRIX_CONTEXT:   "${{ toJson(matrix)   }}" }, run: echo "$MATRIX_CONTEXT"   }
+      - { env: { NEEDS_CONTEXT:    "${{ toJson(needs)    }}" }, run: echo "$NEEDS_CONTEXT"    }
+      - { env: { INPUTS_CONTEXT:   "${{ toJson(inputs)   }}" }, run: echo "$INPUTS_CONTEXT"   }
