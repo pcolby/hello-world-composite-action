@@ -11,6 +11,11 @@ jobs:
           echo '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}'
         env:
           URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}
+      - id: baz
+        run: |
+          echo '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/${{ github.job }}'
+        env:
+          URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/${{ github.job }}
       - id: foo
         uses: pcolby/hello-world-composite-action@v1
         with:
