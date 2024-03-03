@@ -6,8 +6,11 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v3
-      - run: |
+      - id: bar
+        run: |
           echo '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}'
+        env:
+          URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}
       - id: foo
         uses: pcolby/hello-world-composite-action@v1
         with:
