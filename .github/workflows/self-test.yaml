@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_v1:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello (A)
     steps:
       - uses: actions/checkout@v3
       - id: bar
@@ -26,7 +26,7 @@ jobs:
 
   test_secret_v1:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello (B)
     steps:
       - uses: actions/checkout@v3
       - id: foo
@@ -55,7 +55,7 @@ jobs:
 
   test_secret_relative:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello (C)
     steps:
       - uses: actions/checkout@v3
       - id: foo
